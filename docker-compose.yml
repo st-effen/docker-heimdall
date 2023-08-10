@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  heimdall:
+    image: 'linuxserver/heimdall:arm32v7-2.4.15'
+    container_name: heimdall
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - heimdall:/config
+    networks:
+      - heimdall
+ 
+volumes:
+  heimdall:
+ 
+networks:
+  heimdall:
+    driver: bridge
